@@ -5,8 +5,9 @@
   "main": "src/index.ts",
   "scripts": {
     "start:terminal": "ts-node src/index.ts --terminal",
-    "build:web": "webpack --mode production",
-    "dev:web": "webpack serve --mode development --env navegador"
+    "dev:web": "webpack serve --mode development --env archivo=.env.local",
+    "qa:web": "webpack serve --mode development --env archivo=.env.qa",
+    "prod:web": "webpack --mode production --env archivo=.env.prod"
   },
   "dependencies": {
     "prompt-sync": "^4.2.0"

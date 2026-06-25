@@ -4,3 +4,4 @@ dist/
 .env.prod
 .env.qa
 npm-debug.log*
+package-lock.json

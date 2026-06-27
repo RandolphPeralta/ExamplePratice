@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const webpack = require("webpack");
+const Dotenv = require("dotenv-webpack");
 
 const webMode = {
   name: "WebConfig",
@@ -18,6 +20,9 @@ const webMode = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html"
+    }),
+    new Dotenv({
+      path: "./.env.local"
     })
   ],
   devServer: {
@@ -25,7 +30,7 @@ const webMode = {
       directory: path.join(__dirname, "dist/web")
     },
     open: true,
-    port: 8000
+    // port: 8000
   },
   mode: "production",
   module: {

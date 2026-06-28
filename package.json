@@ -4,10 +4,9 @@
   "description": "Programa en consola y navegador con TypeScript",
   "main": "src/index.ts",
   "scripts": {
-    "build:terminal":"webpack --config-name TerminalConfig --env archivo=.env.local",
-    "start:terminal": "node dist/terminal/bundle.js --terminal",
-    "build:web":"webpack --config-name WebConfig",
-    "start:web":"webpack serve --config-name WebConfig --env archivo=.env.local",
+    "start:terminal": "ts-node src/index.ts",
+    "build:web": "webpack --mode production --env archivo=.env.local",
+    "dev:web": "webpack serve --mode development --env archivo=.env.local",
     "build":"webpack",
     "test":"echo\"Error: no test specified\" && exit 1"
   },

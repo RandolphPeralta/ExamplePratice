@@ -82,3 +82,111 @@ module.exports = {
     port: 8000
   }
 };
+
+
+//---------------------------
+
+webpack.config.js:
+
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const webpack = require("webpack");
+const Dotenv = require("dotenv-webpack");
+
+const webMode = {
+  name: "WebConfig",
+  entry: "./src/index.ts",
+  target: "web",
+  resolve: {
+    extensions: [".ts", ".js"]
+  },
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist/web")
+  },
+  externals: {
+    "prompt-sync": "{}"
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html"
+    }),
+    new Dotenv({
+      path: "./.env.local"
+    })
+  ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dist/web")
+    },
+    open: true,
+    // port: 8000
+  },
+  mode: "production",
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/
+      }
+    ]
+  }
+};
+
+const terminalMode = {
+  name: "TerminalConfig",
+  entry: "./src/index.ts",
+  target: "node",
+  resolve: {
+    extensions: [".ts", ".js"]
+  },
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist/terminal")
+  },
+  mode: "production",
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/
+      }
+    ]
+  }
+};
+
+module.exports = [webMode, terminalMode];
+
+//---------------------
+
+Mi Package.json
+
+
+{
+  "name": "ejemplo-ts-node-web",
+  "version": "1.0.0",
+  "description": "Programa en consola y navegador con TypeScript",
+  "main": "src/index.ts",
+  "scripts": {
+    "build:terminal":"webpack --config-name TerminalConfig --env archivo=.env.local",
+    "start:terminal": "node dist/terminal/bundle.js --terminal",
+    "build:web":"webpack --config-name WebConfig",
+    "start:web":"webpack serve --config-name WebConfig --env archivo=.env.local",
+    "build":"webpack",
+    "test":"echo\"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "ts-node": "^10.9.2",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
+    "ts-loader": "^9.5.1",
+    "html-webpack-plugin": "^5.6.0"
+  }
+}

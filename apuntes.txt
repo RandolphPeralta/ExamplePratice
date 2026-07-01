@@ -1,0 +1,4 @@
+La propiedad "target" en el archivo tsconfig.json indica al compilador 
+de TypeScript la versión de JavaScript (ECMAScript) a la que debe traducir 
+(transpilar) tu código. Esto garantiza que el código generado sea compatible 
+con los navegadores o entornos (como Node.js) donde planeas ejecutar tu aplicación.

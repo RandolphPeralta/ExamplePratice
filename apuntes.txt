@@ -5,3 +5,5 @@ con los navegadores o entornos (como Node.js) donde planeas ejecutar tu aplicaci
 
 
 La idea es mirar como podemos usar el index tanto para la terminal como para la web
+
+TOCA BUSCAR LA MANERA QUE DENTRO DEL INDEX PODAMOS ESCOGER DE LA WEB Y TERMINAL

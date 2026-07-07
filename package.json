@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "typechek": "tsc --noEmit",
-    "build": "tsc",
-    "dev": "node dist/index.js",
+    "build:console": "tsc",
+    "dev:console": "node dist/bundle.js",
+    "build:web": "webpack --mode production --env archivo=.env.local",
+    "dev:web": "webpack serve --mode development --env archivo=.env.local",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,7 +25,11 @@
   "homepage": "https://github.com/RandolphPeralta/ExamplePratice#readme",
   "devDependencies": {
     "@types/prompt-sync": "^4.2.3",
-    "typescript": "^6.0.3"
+    "ts-loader": "^9.6.2",
+    "typescript": "^6.0.3",
+    "webpack": "^5.108.4",
+    "webpack-cli": "^7.2.1",
+    "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "prompt-sync": "^4.2.0"

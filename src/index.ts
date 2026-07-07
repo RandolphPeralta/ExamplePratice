@@ -1,7 +1,4 @@
-import promptSync = require("prompt-sync");
-const prompt = promptSync();
+import { prompt } from "./utils/prompt";
 
-const saludo = prompt("Hola, como estas?");
-console.log(saludo);
-
-// const holamundo = console.log("Hola mundo")
+const saludo = prompt("Cuantos años tienes?")
+console.log(`Usted tiene ${saludo} años`)

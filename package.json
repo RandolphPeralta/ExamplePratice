@@ -6,7 +6,7 @@
   "scripts": {
     "typechek": "tsc --noEmit",
     "build:console": "tsc",
-    "dev:console": "node dist/bundle.js",
+    "dev:console": "node dist/index.js",
     "build:web": "webpack --mode production --env archivo=.env.local",
     "dev:web": "webpack serve --mode development --env archivo=.env.local",
     "test": "echo \"Error: no test specified\" && exit 1"

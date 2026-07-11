@@ -7,3 +7,46 @@ con los navegadores o entornos (como Node.js) donde planeas ejecutar tu aplicaci
 La idea es mirar como podemos usar el index tanto para la terminal como para la web
 
 TOCA BUSCAR LA MANERA QUE DENTRO DEL INDEX PODAMOS ESCOGER DE LA WEB Y TERMINAL
+
+const path = require('path');
+
+module.exports = {
+    entry: "./src/index.ts",
+
+    output: {
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "dist")
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                use: "ts-loader",
+                exclude: /node_modules/
+            }
+        ]
+    },
+
+    resolve: {
+        extensions: [".ts", ".js"],
+        fallback: {
+            fs: false,
+            path: false,
+            readline: false
+        }
+    },
+
+    externals: {
+        "prompt-sync": "commonjs prompt-sync"
+    },
+
+    devServer: {
+        static: {
+            directory: path.join(__dirname, "src/ui/web")
+        },
+        open: true,
+        port: 8000
+    }
+
+};

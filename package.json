@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "typechek": "tsc --noEmit",
-    "build": "webpack",
     "build:console": "tsc",
     "dev:console": "node dist/index.js",
     "build:web": "webpack --mode production --env archivo=.env.local",
